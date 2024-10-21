@@ -78,20 +78,31 @@ export function PomodoroTimer({
  }, []);
 
  return (
-  <div className="pomodoro">
-   <h2>You are: Working</h2>
+  <div className="text-white">
+   <h2 className="text-6xl font-bold">
+    You are: {working ? "Working" : "Resting"}
+   </h2>
    <Timer mainTime={mainTime} />
 
-   <div className="controls">
-    <Button title="Work" onClick={() => configureWork()} />
-    <Button title="Rest" onClick={() => configureRest(false)} />
+   <div className="flex justify-around py-2">
+    <Button
+     title="Work"
+     onClick={() => configureWork()}
+     className="bg-cyan-800 hover:bg-cyan-900 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
+    />
+    <Button
+     title="Rest"
+     onClick={() => configureRest(false)}
+     className="bg-orange-400 hover:bg-orange-500 text-white text-lg  font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
+    />
     <Button
      title={timeCounting ? "Pause" : "Play"}
      onClick={() => setTimeCounting(!timeCounting)}
+     className="bg-gray-700 hover:bg-gray-800 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
     />
    </div>
 
-   <div className="details">
+   <div className="text-2xl py-4">
     <p>Completed cycles: {completedCycles}</p>
     <p>Hours worked: {secondsToTime(fullWorkingTime)}</p>
     <p>Completed pomodoros: {numberOfPomodoros}</p>
