@@ -78,7 +78,7 @@ export function PomodoroTimer({
  }, []);
 
  return (
-  <div className="text-white">
+  <div className="text-white border border-white p-12 rounded-lg">
    <h2 className="text-6xl font-bold">
     You are: {working ? "Working" : "Resting"}
    </h2>
@@ -102,10 +102,17 @@ export function PomodoroTimer({
     />
    </div>
 
-   <div className="text-2xl py-4">
-    <p>Completed cycles: {completedCycles}</p>
-    <p>Hours worked: {secondsToTime(fullWorkingTime)}</p>
-    <p>Completed pomodoros: {numberOfPomodoros}</p>
+   <div className="justify-center text-2xl font-bold py-6">
+    <p className="text-center">
+     Completed cycles: <p className="font-normal">{completedCycles}</p>{" "}
+    </p>
+    <p className="text-center py-4">
+     Hours worked:{" "}
+     <p className="font-normal">{secondsToTime(fullWorkingTime)}</p>{" "}
+    </p>
+    <p className="text-center">
+     Completed pomodoros: <p className="font-normal">{numberOfPomodoros}</p>{" "}
+    </p>
    </div>
   </div>
  );
