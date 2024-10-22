@@ -80,6 +80,8 @@ export function PomodoroTimer({
  );
 
  useEffect(() => {
+  //TODO
+  //Alterar design para working e resting
   if (mainTime > 0) return;
 
   if (working && cyclesQtdManager.length > 0) {
@@ -125,6 +127,8 @@ export function PomodoroTimer({
      className="bg-orange-400 hover:bg-orange-500 text-white text-lg  font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
     />
     <Button
+    //TODO
+    //Esconder esse botao caso nao esteja trabalhando e nem descansando
      title={timeCounting ? "Pause" : "Play"}
      onClick={() => setTimeCounting(!timeCounting)}
      className="bg-gray-700 hover:bg-gray-800 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
