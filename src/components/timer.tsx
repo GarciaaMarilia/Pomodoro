@@ -5,5 +5,5 @@ interface TimerProps {
 }
 
 export function Timer({ mainTime }: TimerProps): JSX.Element {
- return <div className="timer">{secondsToTime(mainTime)}</div>;
+ return <div className="flex justify-center text-2xl py-4">{secondsToTime(mainTime)}</div>;
 }
