@@ -19,7 +19,7 @@ A simple and effective Pomodoro Timer built with React and styled using Tailwind
 
 1. Clone the repository:
 
-````bash
+```bash
    git clone https://github.com/your-username/pomodoro-timer.git
    cd pomodoro-timer
 ```
@@ -28,7 +28,7 @@ A simple and effective Pomodoro Timer built with React and styled using Tailwind
 
 ```bash
    npm install
-````
+```
 
 3. Start the development server:
 
