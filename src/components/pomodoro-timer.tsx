@@ -80,8 +80,6 @@ export function PomodoroTimer({
  );
 
  useEffect(() => {
-  //TODO
-  //Alterar design para working e resting
   if (mainTime > 0) return;
 
   if (working && cyclesQtdManager.length > 0) {
@@ -108,6 +106,26 @@ export function PomodoroTimer({
   cycles,
  ]);
 
+ useEffect(() => {
+  if (working) {
+   document.body.classList.add("working");
+   document.body.classList.remove("resting");
+  } else if (resting) {
+   document.body.classList.add("resting");
+   document.body.classList.remove("working");
+  } else {
+   document.body.classList.add("default");
+   document.body.classList.remove("working");
+   document.body.classList.remove("resting");
+  }
+
+  return () => {
+   document.body.classList.add("default");
+   document.body.classList.remove("working");
+   document.body.classList.remove("resting");
+  };
+ }, [working, resting]);
+
  return (
   <div className="text-white border border-white p-12 rounded-lg">
    <h2 className="text-6xl font-bold">
@@ -127,11 +145,13 @@ export function PomodoroTimer({
      className="bg-orange-400 hover:bg-orange-500 text-white text-lg  font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
     />
     <Button
-    //TODO
-    //Esconder esse botao caso nao esteja trabalhando e nem descansando
      title={timeCounting ? "Pause" : "Play"}
      onClick={() => setTimeCounting(!timeCounting)}
-     className="bg-gray-700 hover:bg-gray-800 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
+     className={
+      !working && !resting
+       ? "hidden"
+       : "bg-gray-700 hover:bg-gray-800 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
+     }
     />
    </div>
 
