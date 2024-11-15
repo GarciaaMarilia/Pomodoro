@@ -2,7 +2,7 @@ import { PomodoroTimer } from "./components/pomodoro-timer";
 
 function App(): JSX.Element {
  return (
-  <div className="w-screen h-screen items-center flex justify-center bg-red-400">
+  <div className="w-screen h-screen items-center flex justify-center">
    <PomodoroTimer
     pomodoroTime={1500} // 25min
     shortRestTime={300} // 5min - For each pomodoro one shortRestTime

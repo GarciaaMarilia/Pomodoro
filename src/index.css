@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.working {
+ @apply bg-cyan-900;
+}
+
+.resting {
+ @apply bg-orange-500;
+}
+
+.default {
+ @apply bg-red-400;
+}

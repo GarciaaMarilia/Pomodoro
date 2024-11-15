@@ -5,6 +5,10 @@ import { Timer } from "./timer";
 import { Button } from "./button";
 import { secondsToTime } from "../utils/seconds-to-time";
 
+import checkIcon from "../assets/checked.png";
+import clockIcon from "../assets/clock.png";
+import appleIcon from "../assets/apple.png";
+
 interface PomodoroTimerProps {
  pomodoroTime: number;
  shortRestTime: number;
@@ -106,6 +110,20 @@ export function PomodoroTimer({
   cycles,
  ]);
 
+ useEffect(() => {
+  if (working) {
+   document.body.className = "working";
+  } else if (resting) {
+   document.body.className = "resting";
+  } else {
+   document.body.className = "default";
+  }
+
+  return () => {
+   document.body.className = "default";
+  };
+ }, [working, resting]);
+
  return (
   <div className="text-white border border-white p-12 rounded-lg">
    <h2 className="text-6xl font-bold">
@@ -127,20 +145,31 @@ export function PomodoroTimer({
     <Button
      title={timeCounting ? "Pause" : "Play"}
      onClick={() => setTimeCounting(!timeCounting)}
-     className="bg-gray-700 hover:bg-gray-800 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
+     className={
+      !working && !resting
+       ? "hidden"
+       : "bg-gray-700 hover:bg-gray-800 text-white text-lg font-bold py-2 px-6 rounded transition duration-300 ease-in-out"
+     }
     />
    </div>
 
    <div className="justify-center text-2xl font-bold py-6">
-    <p className="text-center">
-     Completed cycles: <p className="font-normal">{completedCycles}</p>{" "}
+    <p className="text-center flex items-center justify-center">
+     <img src={checkIcon} alt="Clock Icon" className="w-6 h-6 mr-2" />
+     Completed Cycles:{" "}
+     <p className="font-normal text-xl px-2">{completedCycles}</p>
     </p>
-    <p className="text-center py-4">
-     Hours worked:{" "}
-     <p className="font-normal">{secondsToTime(fullWorkingTime)}</p>{" "}
+    <p className="text-center py-4 flex items-center justify-center">
+     <img src={clockIcon} alt="Clock Icon" className="w-6 h-6 mr-2" />
+     Hours Worked:{" "}
+     <p className="font-normal text-xl px-2">
+      {secondsToTime(fullWorkingTime)}
+     </p>{" "}
     </p>
-    <p className="text-center">
-     Completed pomodoros: <p className="font-normal">{numberOfPomodoros}</p>{" "}
+    <p className="text-center flex items-center justify-center">
+     <img src={appleIcon} alt="Clock Icon" className="w-6 h-6 mr-2" />
+     Completed Pomodoros:{" "}
+     <p className="font-normal text-xl px-2">{numberOfPomodoros}</p>{" "}
     </p>
    </div>
   </div>
