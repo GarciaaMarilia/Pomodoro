@@ -112,21 +112,15 @@ export function PomodoroTimer({
 
  useEffect(() => {
   if (working) {
-   document.body.classList.add("working");
-   document.body.classList.remove("resting");
+   document.body.className = "working";
   } else if (resting) {
-   document.body.classList.add("resting");
-   document.body.classList.remove("working");
+   document.body.className = "resting";
   } else {
-   document.body.classList.add("default");
-   document.body.classList.remove("working");
-   document.body.classList.remove("resting");
+   document.body.className = "default";
   }
 
   return () => {
-   document.body.classList.add("default");
-   document.body.classList.remove("working");
-   document.body.classList.remove("resting");
+   document.body.className = "default";
   };
  }, [working, resting]);
 

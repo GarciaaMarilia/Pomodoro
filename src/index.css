@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .working {
- @apply bg-red-500;
+ @apply bg-cyan-900;
 }
 
 .resting {
- @apply bg-orange-600;
+ @apply bg-orange-500;
 }
 
 .default {
